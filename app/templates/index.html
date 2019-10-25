@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+    <body>
+
+
+        {% if form %}
+                    <form action="" method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="input-field">
+                            <p>
+                                {{ form.item.label }} <br>
+                                {{ form.item(size=32) }}
+                            </p>
+                            <p>
+                                {{ form.due_date.label }}
+                                {{ form.due_date(size=32) }}
+                            </p>
+                            <p>{{ form.submit(class_='btn white-text') }}</p>
+                        </div>
+
+                    </form>
+                </div>
+        {% endif %}
+    <div class="container">
+    {% for task in tasks %}
+        <div class="card horizontal blue lighten-4">
+            <div class="card-stacked">
+                <div class="card-content center-align">
+                    <h2>{{ task.item }}</h2>
+                </div>
+                <div class="card-action">
+                    <a href="/completed/{{task.id}}">Completed!</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+        
+        
+    </body>
+</html>
+
+{% endblock %}
+
